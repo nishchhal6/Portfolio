@@ -208,6 +208,13 @@ export default function Hero() {
               }}
             />
             <span className="section-label">Full Stack Developer</span>
+            <div
+              style={{
+                height: "1px",
+                width: "40px",
+                background: "var(--cyan)",
+              }}
+            />
           </div>
 
           {/* Name */}
