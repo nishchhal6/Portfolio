@@ -81,7 +81,7 @@ export default function Navbar() {
           ))}
           {/* UPDATED HIRE ME BUTTON */}
           <a
-            href="/public/Full-Stack-developer-RESUME.pdf"
+            href="/Full-Stack-Developer-RESUME.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="cyber-btn"
