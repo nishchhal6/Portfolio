@@ -25,6 +25,7 @@ export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const particlesRef = useRef<Particle[]>([]);
 
+  // Rising Particles Animation
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -42,6 +43,8 @@ export default function Hero() {
         pointer-events:none;
         left:${Math.random() * 100}%;
         top:${Math.random() * 100 + 100}%;
+        opacity: 0;
+        z-index: 0;
       `;
       container.appendChild(el);
       particles.push({
@@ -86,34 +89,14 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{ paddingTop: "80px" }}
     >
-      {/* Radial glow centers */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          width: "800px",
-          height: "800px",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          background:
-            "radial-gradient(circle, rgba(0,245,255,0.06) 0%, transparent 65%)",
-          borderRadius: "50%",
-        }}
-      />
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          width: "400px",
-          height: "400px",
-          top: "20%",
-          right: "10%",
-          background:
-            "radial-gradient(circle, rgba(57,255,20,0.04) 0%, transparent 65%)",
-          borderRadius: "50%",
-        }}
-      />
+      <style>{`
+        @keyframes orbit-spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
 
-      {/* Orbit rings */}
+      {/* Orbit rings & Planets */}
       <div
         className="absolute pointer-events-none hidden lg:block"
         style={{
@@ -122,82 +105,101 @@ export default function Hero() {
           top: "50%",
           right: "8%",
           transform: "translateY(-50%)",
+          zIndex: 2,
         }}
       >
-        {[380, 300, 220].map((size, i) => (
-          <div
-            key={i}
-            style={{
-              position: "absolute",
-              width: `${size}px`,
-              height: `${size}px`,
-              border: `1px solid rgba(0,245,255,${0.06 + i * 0.04})`,
-              borderRadius: "50%",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              animation: `spin ${12 + i * 6}s linear infinite ${i % 2 === 0 ? "" : "reverse"}`,
-            }}
-          />
-        ))}
-        {/* Center node */}
-        <div
-          className="absolute"
-          style={{
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-          }}
-        >
-          <div
-            style={{
-              width: "100px",
-              height: "100px",
-              background:
-                "linear-gradient(135deg, rgba(0,245,255,0.15), rgba(0,200,212,0.05))",
-              border: "1px solid rgba(0,245,255,0.3)",
-              borderRadius: "50%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              boxShadow: "0 0 40px rgba(0,245,255,0.2)",
-            }}
-          >
-            <span
+        {[380, 300, 220].map((size, i) => {
+          const radius = size / 2;
+          const dotAngles =
+            i === 0
+              ? [0, 72, 144, 216, 288]
+              : i === 1
+                ? [0, 120, 240]
+                : [90, 270];
+
+          return (
+            <div
+              key={i}
+              className="absolute top-1/2 left-1/2"
               style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "1.5rem",
-                color: "var(--cyan)",
-                fontWeight: "900",
+                width: `${size}px`,
+                height: `${size}px`,
+                marginTop: `-${radius}px`,
+                marginLeft: `-${radius}px`,
+                animation: `orbit-spin ${12 + i * 6}s linear infinite ${
+                  i % 2 === 0 ? "normal" : "reverse"
+                }`,
               }}
             >
-              NV
-            </span>
-          </div>
-        </div>
-        {/* Orbit dots */}
-        {[0, 60, 120, 180, 240, 300].map((deg, i) => (
-          <div
-            key={i}
+              {/* Ring Border */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  border: `1px solid rgba(0,245,255,${0.06 + i * 0.04})`,
+                  borderRadius: "50%",
+                }}
+              />
+
+              {/* Planets */}
+              {dotAngles.map((deg, j) => (
+                <div
+                  key={j}
+                  style={{
+                    position: "absolute",
+                    width: "8px",
+                    height: "8px",
+                    marginTop: "-4px",
+                    marginLeft: "-4px",
+                    background:
+                      (i + j) % 2 === 0 ? "var(--cyan)" : "var(--green)",
+                    borderRadius: "50%",
+                    top: `${radius + radius * Math.sin((deg * Math.PI) / 180)}px`,
+                    left: `${radius + radius * Math.cos((deg * Math.PI) / 180)}px`,
+                    boxShadow:
+                      (i + j) % 2 === 0
+                        ? `0 0 10px var(--cyan)`
+                        : `0 0 10px var(--green)`,
+                  }}
+                />
+              ))}
+            </div>
+          );
+        })}
+
+        {/* Center node */}
+        <div
+          className="absolute top-1/2 left-1/2"
+          style={{
+            width: "100px",
+            height: "100px",
+            marginTop: "-50px",
+            marginLeft: "-50px",
+            background:
+              "linear-gradient(135deg, rgba(0,245,255,0.15), rgba(0,200,212,0.05))",
+            border: "1px solid rgba(0,245,255,0.3)",
+            borderRadius: "50%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            boxShadow: `0 0 40px rgba(0,245,255,0.2)`,
+          }}
+        >
+          <span
             style={{
-              position: "absolute",
-              width: "8px",
-              height: "8px",
-              background: i % 2 === 0 ? "var(--cyan)" : "var(--green)",
-              borderRadius: "50%",
-              top: `calc(50% + ${150 * Math.sin((deg * Math.PI) / 180)}px)`,
-              left: `calc(50% + ${150 * Math.cos((deg * Math.PI) / 180)}px)`,
-              transform: "translate(-50%, -50%)",
-              boxShadow:
-                i % 2 === 0 ? "0 0 8px var(--cyan)" : "0 0 8px var(--green)",
+              fontFamily: "var(--font-display)",
+              fontSize: "1.5rem",
+              color: "var(--cyan)",
+              fontWeight: "900",
             }}
-          />
-        ))}
+          >
+            NV
+          </span>
+        </div>
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
-        <div className="max-w-3xl">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pointer-events-none">
+        <div className="max-w-3xl pointer-events-auto">
           {/* Pre-label */}
           <div className="flex items-center gap-3 mb-6">
             <div
@@ -250,7 +252,8 @@ export default function Hero() {
                 opacity: 0.8,
               }}
             >
-              &gt;
+              {" "}
+              &gt;{" "}
             </span>
             <span
               style={{
@@ -259,7 +262,8 @@ export default function Hero() {
                 color: "var(--text-dim)",
               }}
             >
-              {role}
+              {" "}
+              {role}{" "}
             </span>
             <span className="cursor-blink" />
           </div>
@@ -284,8 +288,8 @@ export default function Hero() {
                 color: "var(--text-dim)",
               }}
             >
-              <MapPin size={13} style={{ color: "var(--cyan)" }} />
-              Agra, UP, India
+              <MapPin size={13} style={{ color: "var(--cyan)" }} /> Agra, UP,
+              India
             </span>
             <span
               className="flex items-center gap-2"
@@ -313,10 +317,12 @@ export default function Hero() {
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 mb-12">
             <a href="#projects" className="cyber-btn-filled">
-              View My Work
+              {" "}
+              View My Work{" "}
             </a>
             <a href="#contact" className="cyber-btn">
-              Get In Touch
+              {" "}
+              Get In Touch{" "}
             </a>
           </div>
 
@@ -339,8 +345,7 @@ export default function Hero() {
                 (e.currentTarget.style.color = "var(--text-dim)")
               }
             >
-              <Github size={15} />
-              github.com/nishchhal6
+              <Github size={15} /> github.com/nishchhal6
             </a>
             <a
               href="#contact"
@@ -357,8 +362,7 @@ export default function Hero() {
                 (e.currentTarget.style.color = "var(--text-dim)")
               }
             >
-              <Mail size={15} />
-              nishchhalverma6@gmail.com
+              <Mail size={15} /> nishchhalverma6@gmail.com
             </a>
           </div>
         </div>
@@ -367,7 +371,7 @@ export default function Hero() {
       {/* Scroll cue */}
       <div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        style={{ color: "var(--text-dim)", opacity: 0.5 }}
+        style={{ color: "var(--text-dim)", opacity: 0.5, zIndex: 10 }}
       >
         <span
           style={{
@@ -376,7 +380,8 @@ export default function Hero() {
             letterSpacing: "0.2em",
           }}
         >
-          SCROLL
+          {" "}
+          SCROLL{" "}
         </span>
         <ChevronDown
           size={14}
