@@ -8,8 +8,7 @@ const projects = [
     subtitle: "Real-Time Emergency Rescue System",
     icon: Zap,
     color: "var(--cyan)",
-    image:
-      "https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "/images/cureasap.png",
     description:
       "A real-time emergency dashboard that broadcasts rescue requests to nearby hospitals within a 5 km radius using geo-fencing and WebSockets for live location tracking.",
     highlights: [
@@ -34,8 +33,7 @@ const projects = [
     subtitle: "Quick-Commerce Platform",
     icon: ShoppingCart,
     color: "var(--green)",
-    image:
-      "https://images.pexels.com/photos/1340504/pexels-photo-1340504.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "/images/blinkit.png",
     description:
       "A fully responsive quick-commerce website with centralized cart management, optimized REST APIs, and cross-device consistency across all breakpoints.",
     highlights: [
@@ -61,8 +59,7 @@ const projects = [
     subtitle: "Interactive UI",
     icon: User,
     color: "var(--orange)",
-    image:
-      "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
+    image: "/images/portfolio.png",
     description:
       "A high-performance personal portfolio with advanced CSS animations and code-splitting, achieving 95+ Lighthouse performance score.",
     highlights: [
