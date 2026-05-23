@@ -1,6 +1,6 @@
 import { useInView } from "../hooks/useInView";
 // Import custom icons for balance
-import { Code2, Zap, Globe, Award, Cpu } from "lucide-react";
+import { Code2, Zap, Globe, Cpu } from "lucide-react";
 
 const stats = [
   { value: "3+", label: "Full Stack Apps Built" },
