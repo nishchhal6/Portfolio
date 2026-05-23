@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Terminal } from "lucide-react";
+import { Menu, X, Terminal, ChevronDown, ExternalLink } from "lucide-react";
 
 const links = [
   { label: "About", href: "#about" },
@@ -79,16 +79,80 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
-          {/* UPDATED HIRE ME BUTTON */}
-          <a
-            href="/Full-Stack-Developer-RESUME.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cyber-btn"
-            style={{ fontSize: "0.68rem", padding: "8px 18px" }}
-          >
-            Hire Me
-          </a>
+
+          {/* Resume Dropdown (Desktop) - Opens in new tab */}
+          <div className="relative group">
+            <button
+              className="cyber-btn flex items-center gap-1"
+              style={{
+                fontSize: "0.68rem",
+                padding: "8px 18px",
+                cursor: "default",
+              }}
+            >
+              Resume{" "}
+              <ChevronDown
+                size={14}
+                className="transition-transform group-hover:rotate-180"
+              />
+            </button>
+
+            {/* Dropdown Menu */}
+            <div
+              className="absolute right-0 mt-2 w-48 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right group-hover:scale-100 scale-95"
+              style={{
+                background: "rgba(7, 24, 38, 0.95)",
+                border: "1px solid rgba(0,245,255,0.2)",
+                boxShadow: "0 10px 30px -10px rgba(0,0,0,0.8)",
+                padding: "8px 0",
+              }}
+            >
+              <a
+                href="/AI-Automation-RESUME.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-3 text-sm transition-colors"
+                style={{
+                  color: "var(--text)",
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.75rem",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "var(--cyan)";
+                  e.currentTarget.style.background = "rgba(0,245,255,0.05)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "var(--text)";
+                  e.currentTarget.style.background = "transparent";
+                }}
+              >
+                <ExternalLink size={14} />
+                AI & Automation
+              </a>
+              <a
+                href="/Full-Stack-Developer-RESUME.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-3 text-sm transition-colors"
+                style={{
+                  color: "var(--text)",
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.75rem",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "var(--green)";
+                  e.currentTarget.style.background = "rgba(57,255,20,0.05)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "var(--text)";
+                  e.currentTarget.style.background = "transparent";
+                }}
+              >
+                <ExternalLink size={14} />
+                Full-Stack Dev
+              </a>
+            </div>
+          </div>
         </div>
 
         {/* Mobile toggle */}
@@ -105,7 +169,7 @@ export default function Navbar() {
       <div
         className="md:hidden overflow-hidden transition-all duration-300"
         style={{
-          maxHeight: open ? "400px" : "0",
+          maxHeight: open ? "500px" : "0",
           background: "rgba(2, 11, 18, 0.97)",
           borderBottom: open ? "1px solid rgba(0,245,255,0.1)" : "none",
         }}
@@ -121,6 +185,46 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
+
+          {/* Mobile Resume Links - Opens in new tab */}
+          <div
+            className="mt-2 pt-4 flex flex-col gap-3"
+            style={{ borderTop: "1px solid rgba(0,245,255,0.1)" }}
+          >
+            <span
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "0.65rem",
+                color: "var(--text-dim)",
+                letterSpacing: "0.1em",
+              }}
+            >
+              VIEW RESUMES:
+            </span>
+            <a
+              href="/AI-Automation-RESUME.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cyber-btn text-center flex justify-center items-center gap-2"
+              style={{ fontSize: "0.8rem", padding: "10px 18px" }}
+            >
+              <ExternalLink size={16} /> AI & Automation
+            </a>
+            <a
+              href="/Full-Stack-Developer-RESUME.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cyber-btn text-center flex justify-center items-center gap-2"
+              style={{
+                fontSize: "0.8rem",
+                padding: "10px 18px",
+                background: "rgba(57,255,20,0.05)",
+                borderColor: "var(--green)",
+              }}
+            >
+              <ExternalLink size={16} /> Full-Stack Dev
+            </a>
+          </div>
         </div>
       </div>
     </nav>

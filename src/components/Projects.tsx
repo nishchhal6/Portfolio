@@ -1,34 +1,95 @@
 import { useInView } from "../hooks/useInView";
-import { ExternalLink, Github, Zap, ShoppingCart, User } from "lucide-react";
+import {
+  ExternalLink,
+  Github,
+  Zap,
+  ShoppingCart,
+  User,
+  Mail,
+  Cpu,
+  ArrowRight,
+} from "lucide-react";
 
 const projects = [
   {
     id: "01",
-    name: "CureAsap",
-    subtitle: "Real-Time Emergency Rescue System",
-    icon: Zap,
+    name: "AI eCommerce Support Agent",
+    subtitle: "eCommerce Automation Workflow",
+    icon: Cpu,
     color: "var(--cyan)",
-    image: "/images/cureasap.png",
+    image: "/images/01.png",
     description:
-      "A real-time emergency dashboard that broadcasts rescue requests to nearby hospitals within a 5 km radius using geo-fencing and WebSockets for live location tracking.",
+      "Designed and deployed an end-to-end automated customer support pipeline using n8n to process incoming customer inquiries via webhooks, performing real-time sentiment analysis and auto-drafting responses.",
     highlights: [
-      "Sub-500ms WebSocket data between citizens, drivers, and hospitals",
-      "Geo-fencing broadcast to hospitals within 5 km radius",
-      "Hospital dashboard with 4 core sub-systems: bed inventory, emergency records, driver assignment, and video verification",
+      "Integrated Google Gemini API to analyze ticket sentiment, categorize urgency, and dynamically generate context-aware email response drafts.",
+      "Configured advanced conditional routing logic within n8n to instantly isolate high-priority operational issues.",
+      "Triggered real-time instant alerts on Slack for human developers, optimizing customer resolution response paths.",
     ],
     stack: [
-      "React.js",
-      "Supabase",
-      "WebSockets",
-      "TailwindCSS",
-      "Geolocation API",
+      "n8n Automation",
+      "Gemini API",
+      "Webhooks",
+      "JSON Data Handling",
+      "Google Sheets API",
+      "Slack API",
     ],
-    status: "Production",
-    github: "https://github.com/nishchhal6/CureAsap_Hospital", // Maine update kar diya
-    live: "https://cure-asap-hospital.vercel.app/", // Yahan CureAsap ka live link dalein, agar nahi hai toh khali chhod dein
+    status: "Live Agent",
+    github: "https://github.com/nishchhal6",
+    live: "https://github.com/nishchhal6",
   },
   {
     id: "02",
+    name: "Lead Automation Pipeline",
+    subtitle: "n8n Event-Driven Integration",
+    icon: Mail,
+    color: "var(--green)",
+    image: "/images/02.png",
+    description:
+      "Built an automated event-driven communication pipeline that handles dynamic lead routing and triggers immediate, personalized communication upon form submissions.",
+    highlights: [
+      "Configured automated JSON data extracting layers within n8n to process incoming form fields dynamically.",
+      "Mapped real-time database inputs directly into customized dynamic email templates for instant SMTP dispatch.",
+      "Eliminated manual logging overhead by syncing client-side data triggers with cloud sheets architectures.",
+    ],
+    stack: [
+      "n8n Workflows",
+      "Webhooks",
+      "Google Forms API",
+      "SMTP Server",
+      "JSON Parsing",
+    ],
+    status: "Deployed",
+    github: "https://github.com/nishchhal6",
+    live: "https://github.com/nishchhal6",
+  },
+  {
+    id: "03",
+    name: "CureAsap",
+    subtitle: "Real-Time Emergency Rescue System",
+    icon: Zap,
+    color: "var(--orange)",
+    image: "/images/cureasap.png",
+    description:
+      "Collaborated in a 2-member team to architect and deploy an end-to-end real-time emergency dashboard for hospitals to accept location-based rescue requests.",
+    highlights: [
+      "Utilized WebSockets for instant, real-time data streaming between client dashboards and backend services.",
+      "Co-developed automated backend sub-systems for instant bed inventory updates and driver assignment pipelines.",
+      "Integrated Geolocation APIs to calculate and route rescue assets within sensitive spatial radiuses.",
+    ],
+    stack: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "WebSockets",
+      "Geolocation API",
+    ],
+    status: "Production",
+    github: "https://github.com/nishchhal6/CureAsap_Hospital",
+    live: "https://cure-asap-hospital.vercel.app/",
+  },
+  {
+    id: "04",
     name: "Blinkit Clone",
     subtitle: "Quick-Commerce Platform",
     icon: ShoppingCart,
@@ -54,7 +115,7 @@ const projects = [
     live: "https://blinkit-clone-jade.vercel.app/", // Yahan Blinkit ka live link dalein
   },
   {
-    id: "03",
+    id: "05",
     name: "CyberPunk Portfolio",
     subtitle: "Interactive UI",
     icon: User,
@@ -92,6 +153,7 @@ export default function Projects() {
           <div className="mt-4 section-divider" style={{ maxWidth: "120px" }} />
         </div>
 
+        {/* Project Cards */}
         <div className="flex flex-col gap-10">
           {projects.map((p, i) => (
             <div
@@ -199,7 +261,7 @@ export default function Projects() {
                     ))}
                   </div>
 
-                  {/* Actions - UPDATED HERE */}
+                  {/* Actions */}
                   <div className="flex gap-3">
                     {p.github && (
                       <a
@@ -268,6 +330,36 @@ export default function Projects() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* View More Button Section */}
+        <div
+          className={`flex justify-center mt-16 fade-up ${visible ? "visible" : ""}`}
+          style={{ transitionDelay: "0.6s" }}
+        >
+          <a
+            href="https://github.com/nishchhal6"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cyber-btn flex items-center gap-2"
+            style={{
+              padding: "14px 28px",
+              fontSize: "0.95rem",
+              background: "rgba(0, 245, 255, 0.05)",
+              borderColor: "var(--cyan)",
+            }}
+          >
+            <Github size={18} />
+            <span
+              style={{
+                fontFamily: "var(--font-display)",
+                letterSpacing: "0.05em",
+              }}
+            >
+              View More on GitHub
+            </span>
+            <ArrowRight size={18} />
+          </a>
         </div>
       </div>
     </section>

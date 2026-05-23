@@ -2,11 +2,12 @@ import { useEffect, useRef } from "react";
 import { Github, Mail, MapPin, ChevronDown } from "lucide-react";
 import { useTypewriter } from "../hooks/useTypewriter";
 
+// UPDATED: Added AI and Automation specific roles to the typewriter
 const ROLES = [
   "Full Stack Developer",
-  "React.js Engineer",
-  "Node.js Architect",
-  "WebSocket Specialist",
+  "AI Automation Intern",
+  "React & Node.js Engineer",
+  "n8n Workflow Builder",
   "API Integration Expert",
 ];
 
@@ -209,7 +210,10 @@ export default function Hero() {
                 background: "var(--cyan)",
               }}
             />
-            <span className="section-label">Full Stack Developer</span>
+            {/* UPDATED: Blended label */}
+            <span className="section-label">
+              Full-Stack Engineer & AI Automation Specialist
+            </span>
             <div
               style={{
                 height: "1px",
@@ -269,13 +273,15 @@ export default function Hero() {
           </div>
 
           {/* Bio */}
+          {/* UPDATED: Integrated WebSockets with Automation/LLM context */}
           <p
             className="mb-8 max-w-xl leading-relaxed"
             style={{ color: "var(--text-dim)", fontSize: "1rem" }}
           >
-            Results-driven developer building scalable web applications with
-            real-time systems. Passionate about React, Node.js, and
-            WebSocket-powered solutions that actually ship.
+            Results-driven developer building scalable web applications and
+            intelligent autonomous systems. Passionate about React, Node.js, and
+            integrating event-driven automation pipelines with context-aware
+            LLMs.
           </p>
 
           {/* Meta info */}
