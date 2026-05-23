@@ -13,27 +13,27 @@ export default function Contact() {
     setSending(true);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
+      // YAHAN APNA n8n WEBHOOK URL PASTE KAREIN
+      const response = await fetch(
+        "https://nishchhal267.app.n8n.cloud/webhook/c63c9efb-d667-425f-8736-5177362c2b8f",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: form.name,
+            email: form.email,
+            message: form.message,
+          }),
         },
-        body: JSON.stringify({
-          // You will replace this with your actual key in the next step
-          access_key: "ccfffe21-9988-45d6-9147-5c456fd8bb33",
-          name: form.name,
-          email: form.email,
-          message: form.message,
-        }),
-      });
+      );
 
-      const result = await response.json();
-
-      if (result.success) {
+      // Agar webhook HTTP 200 return karta hai, matlab data successfully chala gaya
+      if (response.ok) {
         setSent(true);
       } else {
-        console.error("Error", result);
+        console.error("Error connecting to webhook");
         alert("Something went wrong. Please try again.");
       }
     } catch (error) {
