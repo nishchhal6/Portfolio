@@ -1,19 +1,5 @@
 import { useInView } from "../hooks/useInView";
-import { GraduationCap, Award, BookOpen } from "lucide-react";
-
-const certs = [
-  {
-    title: "Web Development Bootcamp",
-    org: "Hitesh Choudhary via Udemy",
-    year: "2025",
-  },
-  {
-    title: "Mastering Generative AI and ChatGPT",
-    org: "GeeksforGeeks",
-    year: "2025",
-  },
-  { title: "Python Development", org: "Udemy", year: "2025" },
-];
+import { GraduationCap, Award, Rocket } from "lucide-react";
 
 const achievements = [
   {
@@ -35,7 +21,7 @@ export default function Education() {
     <section id="education" className="relative py-28 px-6">
       <div className="max-w-7xl mx-auto">
         <div className={`fade-up ${visible ? "visible" : ""} mb-16`} ref={ref}>
-          <p className="section-label mb-3">05 / Education</p>
+          <p className="section-label mb-3">06 / Education</p>
           <h2
             className="section-title text-4xl md:text-5xl"
             style={{ color: "var(--text)" }}
@@ -46,12 +32,12 @@ export default function Education() {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Degree */}
+          {/* Column 1: Current Degree */}
           <div
             className={`lg:col-span-1 fade-up ${visible ? "visible" : ""}`}
             style={{ transitionDelay: "0.1s" }}
           >
-            <div className="cyber-card corner-bracket rounded-lg p-7 h-full">
+            <div className="cyber-card corner-bracket rounded-lg p-7 h-full flex flex-col">
               <div
                 className="w-12 h-12 rounded-lg flex items-center justify-center mb-5"
                 style={{
@@ -61,7 +47,7 @@ export default function Education() {
               >
                 <GraduationCap size={22} style={{ color: "var(--cyan)" }} />
               </div>
-              <span className="section-label mb-2 block">Degree</span>
+              <span className="section-label mb-2 block">Current Degree</span>
               <h3
                 className="text-lg font-bold mb-2"
                 style={{
@@ -71,7 +57,7 @@ export default function Education() {
                   fontSize: "0.95rem",
                 }}
               >
-                Bachelor's of Computer Application
+                Bachelor of Computer Applications
               </h3>
               <p
                 style={{
@@ -90,90 +76,154 @@ export default function Education() {
                   fontSize: "0.7rem",
                 }}
               >
-                Agra, UP — 2023–2026(Expected)
+                Agra, UP — 2023–2026 (6th Semester)
               </p>
+
+              <div
+                className="mt-auto pt-5"
+                style={{ borderTop: "1px solid rgba(0,245,255,0.1)" }}
+              >
+                <p
+                  style={{
+                    color: "var(--text-dim)",
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.65rem",
+                    marginBottom: "4px",
+                  }}
+                >
+                  SENIOR PROJECT:
+                </p>
+                <p
+                  style={{
+                    color: "var(--text)",
+                    fontSize: "0.8rem",
+                    lineHeight: "1.4",
+                  }}
+                >
+                  Developed{" "}
+                  <span style={{ color: "var(--cyan)" }}>CureAsap</span>, a
+                  real-time emergency rescue system.
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* Certificates */}
+          {/* Column 2: Future Academic Goals */}
           <div
             className={`lg:col-span-1 fade-up ${visible ? "visible" : ""}`}
             style={{ transitionDelay: "0.2s" }}
           >
-            <div className="cyber-card rounded-lg p-7 h-full">
-              <div className="flex items-center gap-3 mb-5">
-                <BookOpen size={16} style={{ color: "var(--cyan)" }} />
-                <span className="section-label">Certificates</span>
+            <div className="cyber-card corner-bracket rounded-lg p-7 h-full flex flex-col">
+              <div
+                className="w-12 h-12 rounded-lg flex items-center justify-center mb-5"
+                style={{
+                  background: "rgba(255,165,0,0.08)",
+                  border: "1px solid rgba(255,165,0,0.2)",
+                }}
+              >
+                <Rocket size={22} style={{ color: "var(--orange)" }} />
               </div>
-              <div className="flex flex-col gap-4">
-                {certs.map((c, i) => (
-                  <div
-                    key={i}
-                    className="pb-4"
-                    style={{
-                      borderBottom:
-                        i < certs.length - 1
-                          ? "1px solid rgba(0,245,255,0.08)"
-                          : "none",
-                    }}
-                  >
-                    <p
-                      className="font-medium mb-0.5"
-                      style={{ color: "var(--text)", fontSize: "0.85rem" }}
-                    >
-                      {c.title}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <span
-                        style={{
-                          color: "var(--text-dim)",
-                          fontFamily: "var(--font-mono)",
-                          fontSize: "0.65rem",
-                        }}
-                      >
-                        {c.org}
-                      </span>
-                      <span
-                        style={{
-                          color: "var(--cyan)",
-                          fontFamily: "var(--font-mono)",
-                          fontSize: "0.65rem",
-                          opacity: 0.7,
-                        }}
-                      >
-                        {c.year}
-                      </span>
-                    </div>
-                  </div>
-                ))}
+              <span
+                className="section-label mb-2 block"
+                style={{ color: "var(--orange)", opacity: 0.8 }}
+              >
+                Future Goal
+              </span>
+              <h3
+                className="text-lg font-bold mb-2"
+                style={{
+                  fontFamily: "var(--font-display)",
+                  color: "var(--text)",
+                  letterSpacing: "0.03em",
+                  fontSize: "0.95rem",
+                }}
+              >
+                Master of Computer Applications
+              </h3>
+              <p
+                style={{
+                  color: "var(--orange)",
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.75rem",
+                  marginBottom: "8px",
+                }}
+              >
+                Specialization: AI & Machine Learning
+              </p>
+              <p
+                style={{
+                  color: "var(--text-dim)",
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.7rem",
+                }}
+              >
+                Planned for Post-Graduation
+              </p>
+
+              <div
+                className="mt-auto pt-5"
+                style={{ borderTop: "1px solid rgba(255,165,0,0.1)" }}
+              >
+                <p
+                  style={{
+                    color: "var(--text-dim)",
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.65rem",
+                    marginBottom: "4px",
+                  }}
+                >
+                  CAREER OBJECTIVE:
+                </p>
+                <p
+                  style={{
+                    color: "var(--text)",
+                    fontSize: "0.8rem",
+                    lineHeight: "1.4",
+                  }}
+                >
+                  Transitioning into{" "}
+                  <span style={{ color: "var(--orange)" }}>
+                    Software & AI Automation Engineering
+                  </span>
+                  .
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Achievements */}
+          {/* Column 3: Achievements */}
           <div
             className={`lg:col-span-1 fade-up ${visible ? "visible" : ""}`}
             style={{ transitionDelay: "0.3s" }}
           >
-            <div className="cyber-card rounded-lg p-7 h-full">
-              <div className="flex items-center gap-3 mb-5">
-                <Award size={16} style={{ color: "var(--green)" }} />
+            <div className="cyber-card rounded-lg p-7 h-full flex flex-col">
+              <div className="flex items-center gap-3 mb-6">
+                <div
+                  className="w-10 h-10 rounded-lg flex items-center justify-center"
+                  style={{
+                    background: "rgba(57,255,20,0.08)",
+                    border: "1px solid rgba(57,255,20,0.2)",
+                  }}
+                >
+                  <Award size={18} style={{ color: "var(--green)" }} />
+                </div>
                 <span
                   className="section-label"
-                  style={{ color: "var(--green)", opacity: 0.75 }}
+                  style={{ color: "var(--green)", opacity: 0.8 }}
                 >
                   Achievements
                 </span>
               </div>
-              <div className="flex flex-col gap-4">
+
+              <div className="flex flex-col gap-5">
                 {achievements.map((a, i) => (
                   <div
                     key={i}
-                    className="flex gap-3 pb-4"
+                    className="flex gap-3 pb-5"
                     style={{
                       borderBottom:
                         i < achievements.length - 1
-                          ? "1px solid rgba(0,245,255,0.08)"
+                          ? "1px solid rgba(57,255,20,0.1)"
                           : "none",
                     }}
                   >
@@ -181,17 +231,18 @@ export default function Education() {
                       style={{
                         color: "var(--green)",
                         flexShrink: 0,
-                        marginTop: "2px",
+                        marginTop: "1px",
+                        fontSize: "0.9rem",
                       }}
                     >
-                      ★
+                      ✦
                     </span>
                     <div>
                       <p
-                        className="font-medium mb-0.5"
+                        className="font-medium mb-1"
                         style={{
                           color: "var(--text)",
-                          fontSize: "0.83rem",
+                          fontSize: "0.85rem",
                           lineHeight: "1.4",
                         }}
                       >
@@ -201,10 +252,13 @@ export default function Education() {
                         style={{
                           color: "var(--text-dim)",
                           fontFamily: "var(--font-mono)",
-                          fontSize: "0.65rem",
+                          fontSize: "0.68rem",
                         }}
                       >
-                        {a.org} · {a.year}
+                        {a.org} ·{" "}
+                        <span style={{ color: "var(--green)", opacity: 0.8 }}>
+                          {a.year}
+                        </span>
                       </span>
                     </div>
                   </div>

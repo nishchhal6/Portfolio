@@ -34,8 +34,8 @@ const projects = [
       "Slack API",
     ],
     status: "Live Agent",
-    github: "https://github.com/nishchhal6",
-    live: "https://github.com/nishchhal6",
+    github: "https://github.com/nishchhal6/n8n-AI-Customer-Support",
+    live: "https://github.com/nishchhal6/n8n-AI-Customer-Support",
   },
   {
     id: "02",

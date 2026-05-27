@@ -4,6 +4,7 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
+import Certificates from "./components/Certificates";
 import Education from "./components/Education";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -36,6 +37,8 @@ export default function App() {
         <Experience />
         <div className="section-divider" />
         <Projects />
+        <div className="section-divider" />
+        <Certificates />
         <div className="section-divider" />
         <Education />
         <div className="section-divider" />
